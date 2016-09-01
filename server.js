@@ -57,6 +57,15 @@ app.get('/api', function api_index(req, res) {
   })
 });
 
+
+app.get('/api/profile', function api_profile(req, res){
+  res.json({
+    Name: "Zachary",
+
+
+  })
+});
+
 /**********
  * SERVER *
  **********/
