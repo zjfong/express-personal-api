@@ -61,7 +61,7 @@ app.get('/api', function api_index(req, res) {
     endpoints: [
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
       {method: "GET", path: "/api/profile", description: "Data about me"}, // CHANGE ME
-      {method: "POST", path: "/api/campsites", description: "E.g. Create a new campsite"} // CHANGE ME
+      {method: "POST", path: "/api/music", description: "Add to music library"} // CHANGE ME
     ]
   })
 });
@@ -81,17 +81,17 @@ app.get('/api/profile', function api_profile(req, res){
 });
 
 // api.get('/api/pets', function pets(req, res){
-
+//   res.json({pets});
 // });
 
-// api.get('/api/music/', function music_index(req, res){
-//   db.Music.find({}, function index(err){
-//     if(err){
-
-//     }
-//   })
-
-// });
+api.get('/api/music/', function music_index(req, res){
+  db.Music.find({}, function index(err){
+    if(err){
+      console.log("index error" + error);
+    }
+    res.json(db.Music);
+  })
+});
 
 /**********
  * SERVER *
