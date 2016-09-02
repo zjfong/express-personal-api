@@ -3,7 +3,7 @@
 
 var db = require('./models');
 
-var new_music = {Song: "Shiver", Artist: "Coldplay"}
+var new_music = {Title: "Shiver", Artist: "Coldplay"};
 
 db.Music.create(new_music, function(err, music){
   if (err){

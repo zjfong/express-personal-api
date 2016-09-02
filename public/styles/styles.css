@@ -8,3 +8,18 @@ h1 {
   margin-top: 100px;
   text-align: center;
 }
+
+.form-group {
+  text-align: right;
+  display: ;
+  margin: auto auto 0 100px;
+  font-size: 25px;
+}
+
+.btn-success {
+  margin-left: 25%;
+}
+
+/*.form-control {
+
+}*/
