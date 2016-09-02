@@ -21,6 +21,15 @@ app.use(function(req, res, next) {
 
 // var db = require('./models');
 
+var pets = [
+  {
+    name: "Jack",
+    type: "Fish",
+    breed: "Gold"
+  }
+];
+
+
 /**********
  * ROUTES *
  **********/
@@ -47,8 +56,8 @@ app.get('/api', function api_index(req, res) {
   res.json({
     woopsIForgotToDocumentAllMyEndpoints: true, // CHANGE ME ;)
     message: "Welcome to my personal api! Here's what you need to know!",
-    documentationUrl: "https://github.com/example-username/express_self_api/README.md", // CHANGE ME
-    baseUrl: "http://YOUR-APP-NAME.herokuapp.com", // CHANGE ME
+    documentationUrl: "https://github.com/zjfong/express-personal-api", // CHANGE ME
+    baseUrl: "https://warm-atoll-72220.herokuapp.com/", // CHANGE ME
     endpoints: [
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
       {method: "GET", path: "/api/profile", description: "Data about me"}, // CHANGE ME
@@ -60,12 +69,29 @@ app.get('/api', function api_index(req, res) {
 
 app.get('/api/profile', function api_profile(req, res){
   res.json({
-    Name: "Zachary",
-    Test: "Test"
+    name: "Zachary",
+    githubLink: "https://github.com/zjfong",
+    githubProfileImage: "",
+    personalSiteLink: "https://zjfong.github.io/",
+    currentCity: "San Francisco",
+    pets
 
 
   })
 });
+
+// api.get('/api/pets', function pets(req, res){
+
+// });
+
+// api.get('/api/music/', function music_index(req, res){
+//   db.Music.find({}, function index(err){
+//     if(err){
+
+//     }
+//   })
+
+// });
 
 /**********
  * SERVER *
