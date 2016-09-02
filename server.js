@@ -21,26 +21,22 @@ app.use(function(req, res, next) {
 
 var db = require('./models');
 
-var pets = [
+var pets =
   {
     name: "Jack",
     type: "Fish",
     breed: "Gold"
-  }
-];
+  };
 
-var profile = [
-{
+var profile =
+  {
     name: "Zachary",
     githubLink: "https://github.com/zjfong",
     githubProfileImage: "",
     personalSiteLink: "https://zjfong.github.io/",
     currentCity: "San Francisco",
     pets
-
-
-  }
-];
+  };
 
 
 /**********
