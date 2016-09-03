@@ -23,7 +23,7 @@ $(document).ready(function(){
       });
 
       //console.log(musicHtml);
-      $("#music-list").append(musicHtml);
+      $("#form-list").append(musicHtml);
     });
 
   };
@@ -46,8 +46,8 @@ $(document).ready(function(){
 
     function onSuccess(data){
       console.log(data);
-      $("#music-list").append(data.title + " by " + data.artist +
-        " <button type='button' class='btn btn-danger'>Danger</button>");
+      $("#form-list").append("<hr><li>" + data.title + " by " + data.artist +
+        " <button type='button' class='btn btn-danger'>Danger</button></li>");
     };
 
     function onError(xhr, status, err){
@@ -58,11 +58,11 @@ $(document).ready(function(){
     };
   });
 
-  // $('.btn-danger').on('click', function(event){
-  //   $.ajax({
-  //     method: 'DELETE',
-  //     url: '/api/music/'
-  //   });
-  // });
+  $('.btn-danger').on('click', function(event){
+    $.ajax({
+      method: 'DELETE',
+      url: '/api/music/'
+    });
+  });
 
 });

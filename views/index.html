@@ -28,7 +28,7 @@
     </div>
 
 
-
+    <!-- form with text field and success button -->
     <form id="form">
       <div class="form-group row">
         <label for="example-text-input" class="col-xs-2 col-form-label">Title</label>
@@ -49,26 +49,21 @@
       </div>
     </form>
 
-      <ul id="music-list" class="list-group">
-        <li>
-          Title by Artist
-          <button type="button" class="btn btn-danger">Danger</button>
-        </li>
 
-      </ul>
-
+    <!-- handlebars template -->
     <script id="music-template" type="text/x-handlebars-template">
-        <li>
-          {{Song.title}} by {{Song.artist}}
-          <button type="button" class="btn btn-danger">Danger</button>
-        </li>
+      <hr>
+      <li>
+        {{Song.title}} by {{Song.artist}}
+        <button type="button" class="btn btn-danger">Danger</button>
+      </li>
 
     </script>
 
 
 
 
-
+    <!-- handlebars container -->
     <div id="form-list" class="container">
     </div>
 
