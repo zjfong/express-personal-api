@@ -30,7 +30,7 @@ var pets =
 
 var profile =
   {
-    name: "Zachary",
+    name: "Zachary Fong",
     githubLink: "https://github.com/zjfong",
     githubProfileImage: "",
     personalSiteLink: "https://zjfong.github.io/",
@@ -84,16 +84,16 @@ app.get('/api/profile', function api_profile(req, res){
 //   res.json({pets});
 // });
 
-app.get('/api/music/', function music_index(req, res){
+app.get('/api/music/', function musicIndex(req, res){
   db.Music.find({}, function index(err, music){
     if(err){
       console.log("index error: " + err);
     }
     res.json(music);
-  })
+  });
 });
 
-app.get('/api/music/:id', function music_show(req, res){
+app.get('/api/music/:id', function musicShow(req, res){
   var id = req.params.id;
   db.Music.findOne({_id: id}, function show(err, music){
     if(err){
@@ -101,8 +101,28 @@ app.get('/api/music/:id', function music_show(req, res){
     }
     res.json(music);
   })
+});
 
-})
+app.post('/api/music', function musicCreate(req, res){
+  var newMusic = new db.Music ({
+    title: req.body.title,
+    artist: req.body.artist
+  });
+  newMusic.save();
+  res.json(newMusic)
+});
+
+app.delete('/api/music/:title', function musicDelete(req, res) {
+  var musicTitle = req.params.title;
+
+  db.Book.findOneAndRemove({title: musicTitle}, function(err, music){
+    if(err){
+      return console.log("delete error: " + err);
+    }
+    //console.log(music)
+    res.send(music);
+  });
+});
 
 /**********
  * SERVER *

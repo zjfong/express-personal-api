@@ -28,38 +28,46 @@
     </div>
 
 
+
+    <form id="form">
       <div class="form-group row">
         <label for="example-text-input" class="col-xs-2 col-form-label">Title</label>
         <div class="col-xs-4">
-          <input class="form-control" type="text" value="Artisanal kale" id="example-text-input">
+          <input class="form-control" type="text" value="Artisanal kale" id="song-title">
         </div>
       </div>
 
       <div class="form-group row">
         <label for="example-text-input" class="col-xs-2 col-form-label">Artist</label>
         <div class="col-xs-4">
-          <input class="form-control" type="text" value="Artisanal kale" id="example-text-input">
+          <input class="form-control" type="text" value="Artisanal kale" id="song-artist">
         </div>
       </div>
 
+      <div>
+        <button type="text" class="btn btn-success">Success</button>
+      </div>
+    </form>
+
       <ul id="music-list" class="list-group">
         <li>
-          Song by Artist
+          Title by Artist
+          <button type="button" class="btn btn-danger">Danger</button>
         </li>
 
       </ul>
 
     <script id="music-template" type="text/x-handlebars-template">
         <li>
-          {{Song.Song}} by {{Song.Artist}}
+          {{Song.title}} by {{Song.artist}}
+          <button type="button" class="btn btn-danger">Danger</button>
         </li>
+
     </script>
 
 
 
-    <div>
-      <button type="button" class="btn btn-success">Success</button>
-    </div>
+
 
     <div id="form-list" class="container">
     </div>
