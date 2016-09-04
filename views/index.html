@@ -55,8 +55,8 @@
     <script id="music-template" type="text/x-handlebars-template">
       <hr>
       <li>
-        {{Song.title}} by {{Song.artist}}
-        <button type="button" class="deleteBtn btn btn-danger" title={{Song.title}} data-id={{_id}} >Danger</button>
+        {{song.title}} by {{song.artist}}
+        <button type="button" name="button" class="deleteBtn btn btn-danger" data-id={{_id}}>Danger</button>
       </li>
 
     </script>
@@ -66,7 +66,7 @@
 
 
     <!-- handlebars container -->
-    <div id="form-list" class="container">
+    <div id="song-list" class="container">
     </div>
 
 

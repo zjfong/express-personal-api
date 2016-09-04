@@ -75,7 +75,7 @@ app.get('/api', function api_index(req, res) {
   })
 });
 
-
+//profile
 app.get('/api/profile', function api_profile(req, res){
   res.json(profile)
 });
@@ -84,8 +84,9 @@ app.get('/api/profile', function api_profile(req, res){
 //   res.json({pets});
 // });
 
+//get all
 app.get('/api/music/', function musicIndex(req, res){
-  db.Music.find({}, function index(err, music){
+  db.Music.find( function index(err, music){
     if(err){
       console.log("index error: " + err);
     }
@@ -93,6 +94,7 @@ app.get('/api/music/', function musicIndex(req, res){
   });
 });
 
+//find one
 app.get('/api/music/:id', function musicShow(req, res){
   var id = req.params.id;
   db.Music.findOne({_id: id}, function show(err, music){
@@ -103,6 +105,7 @@ app.get('/api/music/:id', function musicShow(req, res){
   })
 });
 
+//create
 app.post('/api/music', function musicCreate(req, res){
   var newMusic = new db.Music ({
     title: req.body.title,
@@ -112,6 +115,21 @@ app.post('/api/music', function musicCreate(req, res){
   res.json(newMusic)
 });
 
+//update
+app.put('/api/music/:id', function(req,res){
+  var musicId = req.params.id;
+  db.Music.findOne({_id: musicId}, function(err, music){
+    if(err){
+      return console.log("update error: " + err);
+    };
+    music.title = req.params.title;
+    music.artist = req.params.author;
+    music.image = req.params.image;
+    res.send(music);
+  })
+});
+
+//delete
 app.delete('/api/music/:id', function musicDelete(req, res) {
   var musicId = req.params.id;
 
