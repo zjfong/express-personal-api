@@ -33,14 +33,14 @@
       <div class="form-group row">
         <label for="example-text-input" class="col-xs-2 col-form-label">Title</label>
         <div class="col-xs-4">
-          <input class="form-control" type="text" value="Artisanal kale" id="song-title">
+          <input class="form-control" type="text" name="title" value="Artisanal kale" id="song-title">
         </div>
       </div>
 
       <div class="form-group row">
         <label for="example-text-input" class="col-xs-2 col-form-label">Artist</label>
         <div class="col-xs-4">
-          <input class="form-control" type="text" value="Artisanal kale" id="song-artist">
+          <input class="form-control" type="text" name = "artist" value="Artisanal kale" id="song-artist">
         </div>
       </div>
 
@@ -50,16 +50,18 @@
     </form>
 
 
+
     <!-- handlebars template -->
     <script id="music-template" type="text/x-handlebars-template">
       <hr>
       <li>
         {{Song.title}} by {{Song.artist}}
-        <button type="button" class="btn btn-danger">Danger</button>
+        <button type="button" class="deleteBtn btn btn-danger" title={{Song.title}} data-id={{_id}} >Danger</button>
       </li>
 
     </script>
 
+<!-- <button type="button" class="btn btn-danger" title={{title}}>Danger</button> -->
 
 
 

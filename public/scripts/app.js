@@ -39,14 +39,13 @@ $(document).ready(function(){
       method: 'POST',
       url: '/api/music',
       data: {title: $('#song-title').val(), artist: $('#song-artist').val()},
-
-      success: onSuccess,
+      success: createSong,
       error: onError
     });
 
-    function onSuccess(data){
+    function createSong(data){
       console.log(data);
-      $("#form-list").append("<hr><li>" + data.title + " by " + data.artist +
+      $('#form-list').append("<hr><li>" + data.title + " by " + data.artist +
         " <button type='button' class='btn btn-danger'>Danger</button></li>");
     };
 
@@ -58,11 +57,33 @@ $(document).ready(function(){
     };
   });
 
-  $('.btn-danger').on('click', function(event){
+  $('#form-list').on('click', '.deleteBtn', function(event){
+    console.log($(this))
+    console.log($(this).attr('data-id'));
     $.ajax({
       method: 'DELETE',
-      url: '/api/music/'
+      url: '/api/music/'+$(this).attr('data-id'),
+      data: $('#form input').serialize(),
+      success: deleteSong,
+      error: onError
     });
+
+    function deleteSong(data){
+      console.log(data)
+      //var songTitle = json.title;
+      //console.log(json.title)
+
+      // for(i=0; i<data.length-1)
+
+      // $('#form-list').empty();
+      //$('#form-list').append()
+    };
+    function onError(xhr, status, err){
+      //console.log($('#form input').serialize());
+      //console.log(data + 'not working');
+      console.log("help ", err);
+
+    };
   });
 
 });

@@ -112,10 +112,10 @@ app.post('/api/music', function musicCreate(req, res){
   res.json(newMusic)
 });
 
-app.delete('/api/music/:title', function musicDelete(req, res) {
-  var musicTitle = req.params.title;
+app.delete('/api/music/:id', function musicDelete(req, res) {
+  var musicId = req.params.id;
 
-  db.Book.findOneAndRemove({title: musicTitle}, function(err, music){
+  db.Music.findOneAndRemove({_id: musicId}, function(err, music){
     if(err){
       return console.log("delete error: " + err);
     }
