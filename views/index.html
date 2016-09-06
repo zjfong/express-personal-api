@@ -18,21 +18,13 @@
     <script src="/scripts/app.js"></script>
   </head>
   <body>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-          <h1>Under Construction</h1>
-          <h4><a href="/api">Read My API Documentation</a></h4>
-        </div>
-      </div>
-    </div>
-    <hr>
+
     <!-- handlebars template -->
     <script id="profile-template" type="text/x-handlebars-template">
       <span id="prof">Name: {{profile.name}}</span>
-      <span id="prof">githubLink: {{profile.githubLink}}</span>
-      <span id="prof">githubProfileImage: {{profile.githubProfileImage}}</span>
-      <span id="prof">personalSiteLink: {{profile.personalSiteLink}}</span>
+      <span id="prof">githubLink: <a href={{profile.githubLink}}>{{profile.githubLink}}</a></span>
+      <span id="prof">githubProfileImage: <img id="me" src={{profile.githubProfileImage}} alt=""></span>
+      <span id="prof">personalSiteLink: <a href={{profile.personalSiteLink}}>{{profile.personalSiteLink}}</a></span>
       <span id="prof">currentCity: {{profile.currentCity}}</span>
       <span id="prof">pets: {{profile.pets.name}} the {{profile.pets.type}}</span>
     </script>
@@ -47,14 +39,14 @@
       <div class="form-group row">
         <label for="example-text-input" class="col-xs-2 col-form-label">Title:</label>
         <div class="col-xs-4">
-          <input class="form-control" type="text" name="title" value="Artisanal kale" id="song-title">
+          <input class="form-control" type="text" name="title" placeholder="Title" id="song-title">
         </div>
       </div>
 
       <div class="form-group row">
         <label for="example-text-input" class="col-xs-2 col-form-label">Artist:</label>
         <div class="col-xs-4">
-          <input class="form-control" type="text" name = "artist" value="Artisanal kale" id="song-artist">
+          <input class="form-control" type="text" name = "artist" placeholder="Artist" id="song-artist">
         </div>
       </div>
 
@@ -73,14 +65,15 @@
 
 
         <button type="button" name="button" class="deleteBtn btn btn-danger" data-id={{song._id}}>Delete</button>
+      <!-- <form id="update-form">
         <div class="col-xs-2">
           <input class="form-control" type="text" name="title" value="Artisanal kale" id="song-title">
         </div>
         <div class="col-xs-2">
-          <input class="form-control" type="text" name="title" value="Artisanal kale" id="song-title">
-        </div>
-        <button type="button" class="btn btn-warning" data-id={{song._id}}>Warning</button>
-
+          <input class="form-control" type="text" name="artist" value="Artisanal kale" id="song-artist">
+        </div> -->
+        <button type="text" class="btn btn-warning" data-id={{song._id}}>Update</button>
+      <!-- </form> -->
       </li>
 
     </script>

@@ -1,7 +1,9 @@
 body {
   color: #333;
   font-family: Helvetica, Arial, sans-serif;
-  background-color: skyblue; /* Sanity Check! */
+  background-color: #009999; /* Sanity Check! */
+  margin-bottom: 50px;
+  margin-top: 50px;
 }
 
 h1 {
@@ -30,6 +32,9 @@ h1 {
 
 }
 
+#me {
+  max-height: 20px;
+}
 
 
 /*.form-control {

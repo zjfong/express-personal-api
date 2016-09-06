@@ -53,30 +53,36 @@ $(document).ready(function(){
 
 
   //create song
+
   $('#form').submit(function(event){
     event.preventDefault();
-    $.ajax({
-      method: 'POST',
-      url: '/api/music',
-      data: {title: $('#song-title').val(), artist: $('#song-artist').val()},
-      success: createSong,
-      error: onError
-    });
+    //create only if form filled
+    if((!($('#song-title').val()==="")) && (!($('#song-artist').val()===""))){
+      $.ajax({
+        method: 'POST',
+        url: '/api/music',
+        data: {title: $('#song-title').val(), artist: $('#song-artist').val()},
+        success: createSong,
+        error: onError
+      });
 
-
+    };
   });
+
 
   //update song
   $('#song-list').on('click', '.btn-warning', function(event){
-
+  //$('#update-form').on('submit', '.btn-warning', function(event){
+    event.preventDefault();
     //var songId = $(this).closest('.songItem').attr('data-id');
     console.log($(this))
     console.log($(this).attr('data-id'));
     $.ajax({
       method: 'PUT',
-      //url: '/api/music/',
-      url: '/api/music/'+$(this).attr('data-id'),
-      data: $('#form input').serialize(),
+      //url: '/api/music',
+      //url: '/api/music/'+$(this).attr('data-id'),
+      //url: '/api/music/'+songId,
+      data: {title: $('#song-title').val(), artist: $('#song-artist').val()},
       success: updateSong,
       error: onError
     });
@@ -108,6 +114,13 @@ $(document).ready(function(){
       error: onError
     });
 
+
+  });
+
+
+
+});
+
     function deleteSong(data){
       console.log(data)
       var music = data;
@@ -119,6 +132,7 @@ $(document).ready(function(){
           break;
         }
       }
+      location.reload();
       //var songTitle = json.title;
       //console.log(json.title)
 
@@ -127,16 +141,12 @@ $(document).ready(function(){
       // $('#song-list').empty();
       //$('#song-list').append()
     };
-  });
-
-
-
-});
 
     function createSong(data){
       console.log(data);
       $('#form input').val('');
       allSongs.push(data);
+      location.reload();
       console.log(allSongs)
       //render();
       //$('#song-list').append("<hr><li>" + data.title + " by " + data.artist +

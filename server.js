@@ -27,8 +27,8 @@ var profile =
   {
     name: "Zachary Fong",
     githubLink: "https://github.com/zjfong",
-    githubProfileImage: "",
-    personalSiteLink: "https://zjfong.github.io/",
+    githubProfileImage: "http://puu.sh/qGUIw/67a88e9996.jpg",
+    personalSiteLink: "https://zjfong.github.io",
     currentCity: "San Francisco",
     pets: {
       name: "Ray",
