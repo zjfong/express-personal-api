@@ -12,12 +12,16 @@ h1 {
 .form-group {
   text-align: right;
   display: ;
-  margin: auto auto 0 100px;
+  margin: auto 400px 0 0;
   font-size: 25px;
 }
 
+#prof {
+  display: block;
+}
+
 .btn-success {
-  margin-left: 25%;
+  margin-left: 165px;
 }
 
 
@@ -25,6 +29,8 @@ h1 {
   position: relative;
 
 }
+
+
 
 /*.form-control {
 

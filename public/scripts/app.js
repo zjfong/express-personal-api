@@ -7,7 +7,22 @@ $(document).ready(function(){
 
   $songList = $('#song-list');
 
+  //display profile
+  $.ajax({
+    method: 'GET',
+    url: '/api/profile',
+    success: displayProfile
+  });
 
+  function displayProfile(data){
+    //console.log('profile data ' + data.name)
+    var profileHtml = template2({
+      profile: data
+    })
+    $("#profile").append(profileHtml);
+  }
+
+  //display songs
   $.ajax({
     method: 'GET',
     url: '/api/music',
@@ -17,7 +32,7 @@ $(document).ready(function(){
   });
 
   function displaySongs(data){
-    console.log(data);
+    console.log("display songs " + data);
 
     data.forEach(function go(element, i, arr){
       var musicHtml = template({
@@ -33,8 +48,11 @@ $(document).ready(function(){
   var source = $('#music-template').html();
   var template = Handlebars.compile(source);
 
+  var source2 = $('#profile-template').html();
+  var template2 = Handlebars.compile(source2);
 
 
+  //create song
   $('#form').submit(function(event){
     event.preventDefault();
     $.ajax({
@@ -48,6 +66,36 @@ $(document).ready(function(){
 
   });
 
+  //update song
+  $('#song-list').on('click', '.btn-warning', function(event){
+
+    //var songId = $(this).closest('.songItem').attr('data-id');
+    console.log($(this))
+    console.log($(this).attr('data-id'));
+    $.ajax({
+      method: 'PUT',
+      //url: '/api/music/',
+      url: '/api/music/'+$(this).attr('data-id'),
+      data: $('#form input').serialize(),
+      success: updateSong,
+      error: onError
+    });
+
+    function updateSong(data){
+      console.log(data)
+      var musicId = data;
+      for(var i=0; i<allSongs.length; i++) {
+        console.log(i)
+        if(allSongs[i]._id === musicId) {
+          console.log('updating')
+          allSongs.splice(i, 1, data);
+          break;
+        }
+      }
+    }
+  });
+
+  //delete song
   $('#song-list').on('click', '.deleteBtn', function(event){
     console.log($(this))
     console.log($(this).attr('data-id'));
@@ -96,8 +144,8 @@ $(document).ready(function(){
     };
 
     function onError(xhr, status, err){
-      console.log($(this).attr('data-id'));
-      console.log($('#form input').serialize());
+      //console.log($(this).attr('data-id'));
+      //console.log($('#form input').serialize());
       //console.log("title ", $('#song-title').val());
       //console.log("artist ", $('#song-artist').val());
       console.log("help ", err);

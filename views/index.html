@@ -26,26 +26,40 @@
         </div>
       </div>
     </div>
+    <hr>
+    <!-- handlebars template -->
+    <script id="profile-template" type="text/x-handlebars-template">
+      <span id="prof">Name: {{profile.name}}</span>
+      <span id="prof">githubLink: {{profile.githubLink}}</span>
+      <span id="prof">githubProfileImage: {{profile.githubProfileImage}}</span>
+      <span id="prof">personalSiteLink: {{profile.personalSiteLink}}</span>
+      <span id="prof">currentCity: {{profile.currentCity}}</span>
+      <span id="prof">pets: {{profile.pets.name}} the {{profile.pets.type}}</span>
+    </script>
 
+    <!-- handlebars container -->
+    <div id="profile" class="container">
+    </div>
+    <hr>
 
     <!-- form with text field and success button -->
     <form id="form">
       <div class="form-group row">
-        <label for="example-text-input" class="col-xs-2 col-form-label">Title</label>
+        <label for="example-text-input" class="col-xs-2 col-form-label">Title:</label>
         <div class="col-xs-4">
           <input class="form-control" type="text" name="title" value="Artisanal kale" id="song-title">
         </div>
       </div>
 
       <div class="form-group row">
-        <label for="example-text-input" class="col-xs-2 col-form-label">Artist</label>
+        <label for="example-text-input" class="col-xs-2 col-form-label">Artist:</label>
         <div class="col-xs-4">
           <input class="form-control" type="text" name = "artist" value="Artisanal kale" id="song-artist">
         </div>
       </div>
 
       <div>
-        <button type="text" class="btn btn-success">Success</button>
+        <button type="text" class="btn btn-success">Add</button>
       </div>
     </form>
 
@@ -54,14 +68,22 @@
     <!-- handlebars template -->
     <script id="music-template" type="text/x-handlebars-template">
       <hr>
-      <li>
+      <li class="songItem">
         {{song.title}} by {{song.artist}}
-        <button type="button" name="button" class="deleteBtn btn btn-danger" data-id={{_id}}>Danger</button>
+
+
+        <button type="button" name="button" class="deleteBtn btn btn-danger" data-id={{song._id}}>Delete</button>
+        <div class="col-xs-2">
+          <input class="form-control" type="text" name="title" value="Artisanal kale" id="song-title">
+        </div>
+        <div class="col-xs-2">
+          <input class="form-control" type="text" name="title" value="Artisanal kale" id="song-title">
+        </div>
+        <button type="button" class="btn btn-warning" data-id={{song._id}}>Warning</button>
+
       </li>
 
     </script>
-
-<!-- <button type="button" class="btn btn-danger" title={{title}}>Danger</button> -->
 
 
 

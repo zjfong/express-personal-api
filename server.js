@@ -21,12 +21,7 @@ app.use(function(req, res, next) {
 
 var db = require('./models');
 
-var pets =
-  {
-    name: "Jack",
-    type: "Fish",
-    breed: "Gold"
-  };
+
 
 var profile =
   {
@@ -35,7 +30,11 @@ var profile =
     githubProfileImage: "",
     personalSiteLink: "https://zjfong.github.io/",
     currentCity: "San Francisco",
-    pets
+    pets: {
+      name: "Ray",
+      type: "Fish",
+      breed: "Gold"
+    }
   };
 
 
@@ -70,7 +69,9 @@ app.get('/api', function api_index(req, res) {
     endpoints: [
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
       {method: "GET", path: "/api/profile", description: "Data about me"}, // CHANGE ME
-      {method: "GET", path: "/api/music", description: "View music library"} // CHANGE ME
+      {method: "GET", path: "/api/music", description: "View music library"}, // CHANGE ME
+      {method: "POST", path: "/api/music", description: "Add to music library"},
+      {method: "DELETE", path: "/api/music/:_id", description: "Delete from music library"},
     ]
   })
 });
