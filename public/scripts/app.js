@@ -72,17 +72,16 @@ $(document).ready(function(){
 
   //update song
   $('#song-list').on('click', '.btn-warning', function(event){
-  //$('#update-form').on('submit', '.btn-warning', function(event){
     event.preventDefault();
-    //var songId = $(this).closest('.songItem').attr('data-id');
-    console.log($(this))
+    var songId = $(this).attr('data-id');
+    console.log(songId);
     console.log($(this).attr('data-id'));
+    var data = {title: $('#song-title').val(), artist: $('#song-artist').val()};
+    //console.log(data)
     $.ajax({
       method: 'PUT',
-      //url: '/api/music',
-      //url: '/api/music/'+$(this).attr('data-id'),
-      //url: '/api/music/'+songId,
-      data: {title: $('#song-title').val(), artist: $('#song-artist').val()},
+      url: '/api/music/' + songId,
+      data: data,
       success: updateSong,
       error: onError
     });
@@ -146,11 +145,11 @@ $(document).ready(function(){
       console.log(data);
       $('#form input').val('');
       allSongs.push(data);
-      location.reload();
+      //location.reload();
       console.log(allSongs)
       //render();
-      //$('#song-list').append("<hr><li>" + data.title + " by " + data.artist +
-      //  " <button type='button' class='btn btn-danger'>Danger</button></li>");
+      $('#song-list').append("<hr><li>" + data.title + " by " + data.artist +
+        " <button type='button' class='btn btn-danger'>Danger</button></li>");
     };
 
     function onError(xhr, status, err){

@@ -119,14 +119,17 @@ app.post('/api/music', function musicCreate(req, res){
 //update
 app.put('/api/music/:id', function(req,res){
   var musicId = req.params.id;
+  console.log('body ', req.body);
   db.Music.findOne({_id: musicId}, function(err, music){
     if(err){
       return console.log("update error: " + err);
     };
-    music.title = req.params.title;
-    music.artist = req.params.author;
-    music.image = req.params.image;
-    res.send(music);
+    music.title = req.body.title;
+    music.artist = req.body.artist;
+    music.image = req.body.image;
+    music.save(function (err, saveMusic){
+      res.send(saveMusic);
+    });
   })
 });
 
